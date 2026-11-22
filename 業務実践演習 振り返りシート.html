@@ -1,0 +1,750 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>業務実践演習 振り返りシート</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;600;700&display=swap">
+
+<style>
+  /* Layout: clean A4-inspired single-column, works as digital form or printed sheet */
+  :root {
+    --bg: #f8f9fb;
+    --surface: #ffffff;
+    --border: #d8dce6;
+    --border-light: #eceef4;
+    --fg: #1a1d26;
+    --fg-muted: #5a6072;
+    --accent: #2c59d4;
+    --accent-soft: #e8edfb;
+    --accent-mid: #b3c3f0;
+    --tag-bg: #f0f4ff;
+    --warn: #c94040;
+    --warn-soft: #fff0f0;
+    --success: #1e8c5a;
+    --success-soft: #eaf7f1;
+    --shadow: 0 1px 4px rgba(30,40,80,0.08);
+    --radius: 8px;
+    --radius-sm: 4px;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12141c;
+      --surface: #1c1f2e;
+      --border: #2e3348;
+      --border-light: #252840;
+      --fg: #e8eaf2;
+      --fg-muted: #8891aa;
+      --accent: #5a82f0;
+      --accent-soft: #1e2545;
+      --accent-mid: #2d3d7a;
+      --tag-bg: #1a2240;
+      --warn: #e06060;
+      --warn-soft: #2a1414;
+      --success: #3abf7e;
+      --success-soft: #0e2419;
+      --shadow: 0 1px 6px rgba(0,0,0,0.3);
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12141c;
+    --surface: #1c1f2e;
+    --border: #2e3348;
+    --border-light: #252840;
+    --fg: #e8eaf2;
+    --fg-muted: #8891aa;
+    --accent: #5a82f0;
+    --accent-soft: #1e2545;
+    --accent-mid: #2d3d7a;
+    --tag-bg: #1a2240;
+    --warn: #e06060;
+    --warn-soft: #2a1414;
+    --success: #3abf7e;
+    --success-soft: #0e2419;
+    --shadow: 0 1px 6px rgba(0,0,0,0.3);
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Noto Sans JP', 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-block: calc(env(safe-area-inset-top, 0px) + 24px) calc(env(safe-area-inset-bottom, 0px) + 40px);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .sheet {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px 16px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .doc-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 3px;
+    padding: 2px 8px;
+    display: inline-block;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fg);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .header-sub {
+    font-size: 12px;
+    color: var(--fg-muted);
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+    border-top: 1px solid var(--border-light);
+    padding-top: 12px;
+  }
+
+  .meta-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .meta-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--fg);
+    width: 100%;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+
+  .meta-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+
+  /* Section card */
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fg);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .section-hint {
+    font-size: 11px;
+    color: var(--fg-muted);
+    flex-shrink: 0;
+  }
+
+  .section-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Task time table */
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .task-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding: 0 8px 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .task-table th:first-child { padding-left: 0; }
+
+  .task-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: middle;
+  }
+
+  .task-table td:first-child { padding-left: 0; }
+  .task-table tr:last-child td { border-bottom: none; }
+
+  .task-table input[type="text"],
+  .task-table input[type="number"] {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: 12px;
+    font-family: inherit;
+    color: var(--fg);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .task-table input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+
+  .task-table input[type="number"] {
+    font-variant-numeric: tabular-nums;
+    width: 60px;
+  }
+
+  /* Diff indicator */
+  .diff-cell {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* Textarea */
+  .text-area {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--fg);
+    width: 100%;
+    resize: vertical;
+    min-height: 72px;
+    outline: none;
+    transition: border-color 0.15s;
+    line-height: 1.6;
+  }
+
+  .text-area:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+
+  .field-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .field-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Rating row */
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .rating-label {
+    font-size: 12px;
+    color: var(--fg);
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .star {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--fg-muted);
+    transition: background 0.1s, border-color 0.1s;
+    user-select: none;
+  }
+
+  .star:hover, .star.active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Next action chips */
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 12px;
+    color: var(--fg-muted);
+    cursor: pointer;
+    transition: all 0.1s;
+    user-select: none;
+  }
+
+  .chip:hover, .chip.active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Submit */
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+
+  .btn:active { transform: scale(0.97); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+  }
+
+  .btn:hover { opacity: 0.85; }
+
+  .save-note {
+    font-size: 11px;
+    color: var(--success);
+    display: none;
+  }
+
+  .save-note.show { display: block; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 2px 0;
+  }
+
+  @media (max-width: 480px) {
+    .header { padding: 16px; }
+    .section-body { padding: 12px 16px; }
+    .section-header { padding: 10px 16px; }
+    .task-table { font-size: 11px; }
+  }
+</style>
+
+<div class="sheet">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <span class="doc-label">業務実践演習 ／ 振り返りシート</span>
+    </div>
+    <h1>タスク管理・時間配分の振り返り</h1>
+    <p class="header-sub">演習終了後に記入してください。日誌とは別に、演習全体を通じた内省を記録します。</p>
+    <div class="meta-row">
+      <div class="meta-field">
+        <span class="meta-label">氏名</span>
+        <input class="meta-input" type="text" placeholder="山田 太郎" id="name">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">記入日</span>
+        <input class="meta-input" type="date" id="date">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">演習期間</span>
+        <input class="meta-input" type="text" placeholder="〇月〇日 〜 〇月〇日" id="period">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: 時間がかかったタスク -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">一番時間がかかったタスクは何か</div>
+      <div class="section-hint">予定との差を記録</div>
+    </div>
+    <div class="section-body">
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th style="width:38%">タスク名</th>
+            <th style="width:18%">予定（日）</th>
+            <th style="width:18%">実際（日）</th>
+            <th style="width:16%">差</th>
+            <th style="width:10%"></th>
+          </tr>
+        </thead>
+        <tbody id="task-body">
+          <tr>
+            <td><input type="text" placeholder="プレゼン資料作成" class="task-name"></td>
+            <td><input type="number" min="0" max="14" placeholder="3" class="task-plan"></td>
+            <td><input type="number" min="0" max="14" placeholder="5" class="task-actual"></td>
+            <td class="diff-cell">—</td>
+            <td><button onclick="removeRow(this)" style="background:none;border:none;color:var(--fg-muted);cursor:pointer;font-size:16px;padding:0 4px;">×</button></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="先輩インタビュー準備" class="task-name"></td>
+            <td><input type="number" min="0" max="14" placeholder="1" class="task-plan"></td>
+            <td><input type="number" min="0" max="14" placeholder="2" class="task-actual"></td>
+            <td class="diff-cell">—</td>
+            <td><button onclick="removeRow(this)" style="background:none;border:none;color:var(--fg-muted);cursor:pointer;font-size:16px;padding:0 4px;">×</button></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Excelまとめ" class="task-name"></td>
+            <td><input type="number" min="0" max="14" placeholder="1" class="task-plan"></td>
+            <td><input type="number" min="0" max="14" placeholder="1" class="task-actual"></td>
+            <td class="diff-cell">—</td>
+            <td><button onclick="removeRow(this)" style="background:none;border:none;color:var(--fg-muted);cursor:pointer;font-size:16px;padding:0 4px;">×</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-secondary" onclick="addRow()" style="font-size:12px;padding:6px 14px;align-self:flex-start;">＋ タスクを追加</button>
+
+      <div class="divider"></div>
+      <div class="field-wrap">
+        <div class="field-label">最も時間を要したタスクについて、一言コメント</div>
+        <textarea class="text-area" placeholder="例：プレゼン資料の構成に迷い、何度もつくり直してしまった。" id="time-comment" rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: 予定通り進められなかった原因 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">予定通り進められなかった原因</div>
+    </div>
+    <div class="section-body">
+      <div class="field-wrap">
+        <div class="field-label">当てはまるものを選んでください（複数選択可）</div>
+        <div class="chip-group" id="cause-chips">
+          <div class="chip" onclick="toggleChip(this)">タスクの見積もりが甘かった</div>
+          <div class="chip" onclick="toggleChip(this)">優先順位の判断が難しかった</div>
+          <div class="chip" onclick="toggleChip(this)">想定外のタスクが発生した</div>
+          <div class="chip" onclick="toggleChip(this)">グループ内の調整に時間がかかった</div>
+          <div class="chip" onclick="toggleChip(this)">情報収集・調査に時間がかかった</div>
+          <div class="chip" onclick="toggleChip(this)">集中できない時間帯があった</div>
+          <div class="chip" onclick="toggleChip(this)">特に問題なかった</div>
+        </div>
+      </div>
+      <div class="field-wrap">
+        <div class="field-label">具体的に何が起きたか（自由記述）</div>
+        <textarea class="text-area" placeholder="例：グループメンバーとの役割分担が曖昧で、誰が何をするか決まるまでに2日かかった。" id="cause-detail" rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: 次回同じ状況でどう動くか -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">次回同じ状況でどう動くか</div>
+    </div>
+    <div class="section-body">
+      <div class="field-wrap">
+        <div class="field-label">次回試したいアクション（複数選択可）</div>
+        <div class="chip-group" id="action-chips">
+          <div class="chip" onclick="toggleChip(this)">最初にタスクを細かく分解する</div>
+          <div class="chip" onclick="toggleChip(this)">1日の終わりに翌日の予定を決める</div>
+          <div class="chip" onclick="toggleChip(this)">役割分担を初日に明文化する</div>
+          <div class="chip" onclick="toggleChip(this)">締め切りを逆算してマイルストーンを置く</div>
+          <div class="chip" onclick="toggleChip(this)">困ったら早めに相談する</div>
+          <div class="chip" onclick="toggleChip(this)">バッファ（予備日）を設ける</div>
+        </div>
+      </div>
+      <div class="field-wrap">
+        <div class="field-label">自分なりの改善策（自由記述）</div>
+        <textarea class="text-area" placeholder="例：毎朝5分、今日やることを3つだけ紙に書き出してから始める。" id="next-action" rows="3"></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Self-rating -->
+      <div class="field-label">今回の演習での自己評価（各項目1〜5）</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="rating-row">
+          <span class="rating-label">タスクの優先順位付け</span>
+          <div class="stars" data-key="priority">
+            <div class="star" onclick="rateStar(this, 1)">1</div>
+            <div class="star" onclick="rateStar(this, 2)">2</div>
+            <div class="star" onclick="rateStar(this, 3)">3</div>
+            <div class="star" onclick="rateStar(this, 4)">4</div>
+            <div class="star" onclick="rateStar(this, 5)">5</div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <span class="rating-label">スケジュール管理・時間配分</span>
+          <div class="stars" data-key="schedule">
+            <div class="star" onclick="rateStar(this, 1)">1</div>
+            <div class="star" onclick="rateStar(this, 2)">2</div>
+            <div class="star" onclick="rateStar(this, 3)">3</div>
+            <div class="star" onclick="rateStar(this, 4)">4</div>
+            <div class="star" onclick="rateStar(this, 5)">5</div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <span class="rating-label">グループ内の協調・連携</span>
+          <div class="stars" data-key="teamwork">
+            <div class="star" onclick="rateStar(this, 1)">1</div>
+            <div class="star" onclick="rateStar(this, 2)">2</div>
+            <div class="star" onclick="rateStar(this, 3)">3</div>
+            <div class="star" onclick="rateStar(this, 4)">4</div>
+            <div class="star" onclick="rateStar(this, 5)">5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="save-note" id="save-note">✓ 保存しました</span>
+    <button class="btn btn-secondary" onclick="clearForm()">クリア</button>
+    <button class="btn btn-primary" onclick="saveForm()">記入完了・保存</button>
+  </div>
+
+</div>
+
+<script>
+  // Set today's date
+  document.getElementById('date').value = new Date().toISOString().slice(0,10);
+
+  // Chip toggle
+  function toggleChip(el) {
+    el.classList.toggle('active');
+  }
+
+  // Star rating
+  function rateStar(clickedStar, val) {
+    const group = clickedStar.closest('.stars');
+    const stars = group.querySelectorAll('.star');
+    stars.forEach((s, i) => {
+      s.classList.toggle('active', i < val);
+    });
+    group.dataset.value = val;
+  }
+
+  // Task table diff
+  function updateDiffs() {
+    document.querySelectorAll('#task-body tr').forEach(row => {
+      const plan = parseFloat(row.querySelector('.task-plan')?.value) || 0;
+      const actual = parseFloat(row.querySelector('.task-actual')?.value) || 0;
+      const cell = row.querySelector('.diff-cell');
+      if (!cell) return;
+      if (!plan && !actual) { cell.textContent = '—'; cell.style.color = ''; return; }
+      const diff = actual - plan;
+      if (diff > 0) {
+        cell.textContent = '+' + diff + '日';
+        cell.style.color = 'var(--warn)';
+      } else if (diff < 0) {
+        cell.textContent = diff + '日';
+        cell.style.color = 'var(--success)';
+      } else {
+        cell.textContent = '±0';
+        cell.style.color = 'var(--fg-muted)';
+      }
+    });
+  }
+
+  document.getElementById('task-body').addEventListener('input', updateDiffs);
+  updateDiffs();
+
+  // Add task row
+  function addRow() {
+    const tbody = document.getElementById('task-body');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" placeholder="タスク名" class="task-name"></td>
+      <td><input type="number" min="0" max="14" placeholder="0" class="task-plan"></td>
+      <td><input type="number" min="0" max="14" placeholder="0" class="task-actual"></td>
+      <td class="diff-cell">—</td>
+      <td><button onclick="removeRow(this)" style="background:none;border:none;color:var(--fg-muted);cursor:pointer;font-size:16px;padding:0 4px;">×</button></td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('input').focus();
+  }
+
+  function removeRow(btn) {
+    const rows = document.querySelectorAll('#task-body tr');
+    if (rows.length > 1) btn.closest('tr').remove();
+  }
+
+  // Save (localStorage)
+  function saveForm() {
+    try {
+      const data = {
+        name: document.getElementById('name').value,
+        date: document.getElementById('date').value,
+        period: document.getElementById('period').value,
+        timeComment: document.getElementById('time-comment').value,
+        causeDetail: document.getElementById('cause-detail').value,
+        nextAction: document.getElementById('next-action').value,
+        causesSelected: [...document.querySelectorAll('#cause-chips .chip.active')].map(c => c.textContent),
+        actionsSelected: [...document.querySelectorAll('#action-chips .chip.active')].map(c => c.textContent),
+        ratings: {
+          priority: document.querySelector('[data-key="priority"]')?.dataset.value || '',
+          schedule: document.querySelector('[data-key="schedule"]')?.dataset.value || '',
+          teamwork: document.querySelector('[data-key="teamwork"]')?.dataset.value || '',
+        },
+        tasks: [...document.querySelectorAll('#task-body tr')].map(row => ({
+          name: row.querySelector('.task-name')?.value || '',
+          plan: row.querySelector('.task-plan')?.value || '',
+          actual: row.querySelector('.task-actual')?.value || '',
+        }))
+      };
+      localStorage.setItem('reflection-sheet', JSON.stringify(data));
+    } catch(e) {}
+    const note = document.getElementById('save-note');
+    note.classList.add('show');
+    setTimeout(() => note.classList.remove('show'), 2500);
+  }
+
+  function clearForm() {
+    if (!confirm('入力内容をクリアしますか？')) return;
+    document.getElementById('name').value = '';
+    document.getElementById('period').value = '';
+    document.getElementById('time-comment').value = '';
+    document.getElementById('cause-detail').value = '';
+    document.getElementById('next-action').value = '';
+    document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.star.active').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('[data-value]').forEach(el => delete el.dataset.value);
+    updateDiffs();
+  }
+
+  // Load saved
+  try {
+    const saved = JSON.parse(localStorage.getItem('reflection-sheet') || 'null');
+    if (saved) {
+      if (saved.name) document.getElementById('name').value = saved.name;
+      if (saved.period) document.getElementById('period').value = saved.period;
+      if (saved.timeComment) document.getElementById('time-comment').value = saved.timeComment;
+      if (saved.causeDetail) document.getElementById('cause-detail').value = saved.causeDetail;
+      if (saved.nextAction) document.getElementById('next-action').value = saved.nextAction;
+    }
+  } catch(e) {}
+</script>
+
+</body></html>
